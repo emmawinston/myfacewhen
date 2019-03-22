@@ -595,11 +595,11 @@ var cursor2 = document.getElementById("cursor2");
 var cursor3 = document.getElementById("cursor3");
 var x0 = 35;
 var y0 = 430;
-var x1 = 1655;
+var x1 = 1665;
 var y1 = 430;
 var x2 = 35;
 var y2 = 925;
-var x3 = 1655;
+var x3 = 1665;
 var y3 = 925;
   
 
