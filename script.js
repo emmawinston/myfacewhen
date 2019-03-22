@@ -19,14 +19,14 @@ var phrases = [
   `my ${RiTa.randomWord('nn')} starts to ${RiTa.randomWord('vb')}`
 ];
   
-const beep = new Audio("https://cdn.glitch.com/e2541f7a-318a-4a36-9cd1-0d84b656800d%2Fbeep.mp3?1553290376651");
-const fanfare = new Audio("https://cdn.glitch.com/e2541f7a-318a-4a36-9cd1-0d84b656800d%2Ffanfare.mp3?1553290586655");
-const kazoo = new Audio("https://cdn.glitch.com/e2541f7a-318a-4a36-9cd1-0d84b656800d%2Fkazoo.mp3?1553291279287");
-const tick = new Audio("https://cdn.glitch.com/e2541f7a-318a-4a36-9cd1-0d84b656800d%2Ftick.mp3?1553290040818");
-const go = new Audio("https://cdn.glitch.com/e2541f7a-318a-4a36-9cd1-0d84b656800d%2Fgo.mp3?1553291710581");
-const ring = new Audio("https://cdn.glitch.com/e2541f7a-318a-4a36-9cd1-0d84b656800d%2Fring.mp3?1553292342033");
-const pop = new Audio("https://cdn.glitch.com/e2541f7a-318a-4a36-9cd1-0d84b656800d%2Fpop.mp3?1553292713729");
-const whoosh = new Audio("https://cdn.glitch.com/e2541f7a-318a-4a36-9cd1-0d84b656800d%2Fwhoosh.mp3?1553293015141");
+const beep = new Audio("beep.mp3");
+const fanfare = new Audio("fanfare.mp3");
+const kazoo = new Audio("kazoo.mp3");
+const tick = new Audio("tick.mp3");
+const go = new Audio("go.mp3");
+const ring = new Audio("ring.mp3");
+const pop = new Audio("pop.mp3");
+const whoosh = new Audio("whoosh.mp3");
   
 var state = 0;
 $("#cursors").hide();
