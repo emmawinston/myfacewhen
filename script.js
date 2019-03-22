@@ -240,7 +240,7 @@ function countDown() {
         snapshot("#area1", "facevote1", 244);
         snapshot("#area2", "facevote2", 244);
         snapshot("#area3", "facevote3", 244);
-        snapshot("#area4", "facevote4", 244, changeState, 3);
+        snapshot("#area4", "facevote4", 244, changeState, 3, function() { $("#timesup").hide(); });
       });
   
     }
