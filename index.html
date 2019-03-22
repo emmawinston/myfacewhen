@@ -1,0 +1,293 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>【ｍｙ　ｆａｃｅ　ｗｈｅｎ】</title>
+	<link rel="stylesheet" type="text/css" href="style.css" charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="animate.min.css" charset="utf-8">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+  <script src="rita.min.js"></script>
+  <script src="gamepad.js"></script>
+  <script src="script.js"></script>
+  <script src="confetti.js" defer></script>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <div class="main">
+    <!--div class="bg"></div-->
+  
+<div id="header">
+  <div id="buttons">
+      <button id="start"><h1>Start</h1></button>
+      <button class="reset"><h1>Reset</h1></button>
+    </div>
+  
+  <div class="from-me animated bounceInLeft">
+    <div class="emoji rotate-center">😳</div>	
+    my face when
+    <div class="emoji rotate-reverse">🙃</div>
+  </div>
+</div>
+  
+  <div id="splash" class="animated bounceInRight">
+    
+    <p>You'll need ✨four✨ people to play.</p>
+    <p>The computer will give you a scenario.</p>
+    <p>You'll have ⏰one minute⏰ to create an emoji to express your reaction.</p>
+    <p>When the time is up, vote for the best face.</p>
+    
+    <h2>
+      Press A on your controller to join the game.
+    </h2>
+    <p>
+       Press B to refresh the session.
+    </p>
+    
+    <div id="p0join">💚 <b>Player 1 has joined!</b></div>
+    <div id="p1join">❤️️ <b>Player 2 has joined!</b></div>
+    <div id="p2join">💜 <b>Player 3 has joined!</b></div>
+      <div id="p3join">💙 <b>Player 4 has joined!</b></div>
+
+  </div>
+  
+  <div id="prompt" class="animated bounceInLeft">
+    <div class="from-me">My face when <span class="sentence"></span>.</div>
+    
+    <div class="bouncers">
+      <div class="waiting waiting1 animated infinite bounce">😂</div>
+      <div class="waiting waiting2 animated infinite bounce">😜</div>
+      <div class="waiting waiting3 animated infinite bounce">😭</div>
+    </div>
+    
+    <div id="startcounter" class="animated rubberBand infinite">
+      <div id="counterstart">3</div>
+    </div>
+  </div>
+  
+  <div id="maingame">
+    <div id="counter" class="animated rubberBand infinite">60</div>
+	<div id="dollmaker_container">
+			<div id="piecesArea">
+        
+        
+        <div id="area1" class="ui-corner-all facearea">
+              <img src="base.png" alt="face1" width="224px"/>
+            </div>
+        <div id="area2" class="ui-corner-all facearea">
+              <img src="base.png" alt="face1" width="224px"/>
+            </div>
+        <div id="area3" class="ui-corner-all facearea">
+          <img src="base.png" alt="face1" width="224px">
+        </div>
+        <div id="area4" class="ui-corner-all facearea">
+          <img src="base.png" alt="face1" width="224px">
+        </div>
+        
+        
+        <div class="wrapper" id="wrap1">
+          <div id="eyes">
+            <img alt="" src="eyeregular.png" width="28px"/>
+            <img alt="" src="eyeregular.png" width="28px"/>
+            <img alt="" src="eyelong.png" width="26px"/>
+            <img alt="" src="eyelong.png" width="26px"/>
+            <img alt="" src="eyewinkleft.png" width="47px" />
+            <img alt="" src="eyewinkright.png" width="47px" />
+            <img alt="" src="eyeangryleft.png" width="48px" />
+            <img alt="" src="eyeangryright.png" width="48px" />
+            <img alt="" src="eyebitsadleft.png" width="74px" />
+            <img alt="" src="eyebitsadright.png" width="74px" />
+            <img alt="" src="eyeblushingleft.png" width="78px" />
+            <img alt="" src="eyeblushingright.png" width="78px" />
+            <img alt="" src="eyebulge.png" width="76px" />
+            <img alt="" src="eyebulge.png" width="76px" />
+            <img alt="" src="eyecheekyleft.png" width="60px" />
+            <img alt="" src="eyecheekyright.png" width="68px" />
+            <img alt="" src="eyeclosed.png" width="48px" />
+            <img alt="" src="eyeclosed.png" width="48px" />
+            <img alt="" src="eyecryleft.png" width="82px" />
+            <img alt="" src="eyecryright.png" width="82px" />
+            <img alt="" src="eyedeadleft.png" width="63px" />
+            <img alt="" src="eyedeadright.png" width="63px" />
+            <img alt="" src="eyedisappointedleft.png" width="52px" />
+            <img alt="" src="eyedisappointedright.png" width="52px" />
+            <img alt="" src="eyedollarleft.png" width="56px" />
+            <img alt="" src="eyedollarright.png" width="56px" />
+            <img alt="" src="eyeeyeroll.png" width="78px" />
+            <img alt="" src="eyeeyeroll.png" width="78px" />
+            <img alt="" src="eyehappy.png" width="40px" />
+            <img alt="" src="eyehappy.png" width="40px" />
+            <img alt="" src="eyehappybrowleft.png" width="54px" />
+            <img alt="" src="eyehappybrowright.png" width="54px" />
+            <img alt="" src="eyeheartleft.png" width="89px" />
+            <img alt="" src="eyeheartright.png" width="89px" />
+            <img alt="" src="eyelaugh.png" width="62px" />
+            <img alt="" src="eyelaugh.png" width="62px" />
+            <img alt="" src="eyesurprisedleft.png" width="52px" />
+            <img alt="" src="eyesurprisedright.png" width="52px" />
+            <img alt="" src="eyethinkyleft.png" width="52px" />
+            <img alt="" src="eyethinkyright.png" width="50px" />
+            <img alt="" src="eyesighleft.png" width="58px" />
+            <img alt="" src="eyesighright.png" width="58px" />
+      
+            
+          </div>
+        </div>
+        
+        <div class="wrapper" id="wrap2">
+          <div id="eyes2">
+          
+          </div>
+        </div>
+        
+        <div class="wrapper" id="wrap3">
+          <div id="mouths">
+            <img alt="" src="eyeunimpressedleft.png" width="70px" />
+            <img alt="" src="eyeunimpressedright.png" width="71px" />
+            <img alt="" src="eyewhyleft.png" width="53px" />
+            <img alt="" src="eyewhyright.png" width="53px" />
+            <img alt="" src="eyeworriedleft.png" width="68px" />
+            <img alt="" src="eyeworriedright.png" width="68px" />
+            <img alt="" src="eyesteamleft.png" width="58px" />
+            <img alt="" src="eyesteamright.png" width="58px" />
+            <img alt="" src="eyelaughtearsleft.png" width="76px" />
+            <img alt="" src="eyelaughtearsright.png" width="76px" />
+            <img alt="" src="eyesadleft.png" width="58px" />
+            <img alt="" src="eyesadright.png" width="58px" />
+            <img alt="" src="eyeshhleft.png" width="31px" />
+            <img alt="" src="eyeshhright.png" width="31px" />
+            <img alt="" src="eyespookyleft.png" width="66px" />
+            <img alt="" src="eyespookyright.png" width="66px" />
+            <img alt="" src="eyesurprisedleft.png" width="52px" />
+            <img alt="" src="eyesurprisedright.png" width="52px" />
+            <img alt="" src="mouthsmile.png" width="94px" />
+            <img alt="" src="mouthsad.png" width="102px" />
+            <img alt="" src="mouthgrin.png" width="150px" />
+            <img alt="" src="mouthdisappointed.png" width="64px" />
+            <img alt="" src="mouthshockedbig.png" width="54px" />
+            <img alt="" src="mouthbitsad.png" width="52px" />
+            <img alt="" src="mouthpout.png" width="37px" />
+            <img alt="" src="mouthoreyespeaceful.png" width="66px" />
+            <img alt="" src="mouthshockedsmall.png" width="38px" />
+            <img alt="" src="mouthcry.png" width="76px" />
+            <img alt="" src="mouthjoy.png" width="116px" />
+            <img alt="" src="mouthdoh.png" width="121px" />
+            <img alt="" src="mouththinky.png" width="65px" />
+            <img alt="" src="mouthkiss.png" width="114px" />
+            <img alt="" src="mouthsmirk.png" width="82px" />
+            <img alt="" src="mouthstraight.png" width="116px" />
+            <img alt="" src="mouthsmilebig.png" width="104px" />
+            <img alt="" src="mouthsurprised.png" width="72px" />
+            <img alt="" src="mouthsigh.png" width="134px" />
+            <img alt="" src="mouthspooky.png" width="49px" />
+            <img alt="" src="mouthverysad.png" width="110px" />
+            <img alt="" src="mouthunsure.png" width="101px" />
+            <img alt="" src="mouthgrimace.png" width="148px" />
+            <img alt="" src="mouthsick.png" width="125px" />
+            <img alt="" src="mouthdollar.png" width="134px" />
+            <img alt="" src="mouthtongueout.png" width="134px" />
+            <img alt="" src="mouthtasty.png" width="171px" />
+            <img alt="" src="mouthzipper.png" width="186px" />  
+          
+            
+          </div>
+        </div>
+        
+        <div class="wrapper" id="wrap4">
+          <div id="eyes3">
+          
+          </div>
+        </div>
+		
+        <div class="wrapper" id="wrap5">
+          <div id="extras">
+        
+            <img alt="" src="handthinky.png" width="111px" />
+            <img alt="" src="cheeksblush.png" width="181px" />
+            <img alt="" src="teeth.png" width="44px" />
+            <img alt="" src="shhhand.png" width="92px" />
+            <img alt="" src="halo.png" width="228px" />
+            <img alt="" src="glasses.png" width="191px" />
+            <img alt="" src="sunglasses.png" width="217px" />
+            <img alt="" src="tearsweatdrop.png" width="72px" />
+            <img alt="" src="bandage.png" width="214px" />
+            <img alt="" src="zzz.png" width="107px" />
+            <img alt="" src="jazzhands.png" width="220px" />
+            <img alt="" src="spookyhands.png" width="197px" />
+            <img alt="" src="tears.png" width="255px" />
+            <img alt="" src="mouthmask.png" width="241px" />
+            <img alt="" src="steam.png" width="167px" />
+ 
+            
+          </div>
+        </div>
+  
+			</div><!--PiecesArea-->		
+	  </div><!--container-->
+  </div>
+    
+  <div id="timesup" data-html2canvas-ignore="true">
+    <div class="animated lightSpeedIn">
+      <h1 class="animated heartBeat infinite">
+       TIME'S UP!
+      </h1>  
+    </div>
+  </div>
+  
+  <div id="voting">
+    <h3>
+      Vote for the best face by clicking on your choice. Best of four is the winner.
+    </h3>
+    
+    <div id="votefaces">
+      <div id="facevote1" class="ui-corner-all facevote">
+      </div>
+      <div id="facevote2" class="ui-corner-all facevote">
+      </div>
+      <div id="facevote3" class="ui-corner-all facevote">
+      </div>
+      <div id="facevote4" class="ui-corner-all facevote">
+      </div>
+    </div>
+  </div>
+  
+  <div id="cursors">
+    <div id="cursor0" class="cursor" data-html2canvas-ignore="true">💚</div>
+    <div id="cursor1" class="cursor" data-html2canvas-ignore="true">❤️️</div>
+    <div id="cursor2" class="cursor" data-html2canvas-ignore="true">💜</div>
+    <div id="cursor3" class="cursor" data-html2canvas-ignore="true">💙</div>
+  </div>
+  
+  <div id="awards">
+    <h2 id="winnertie">
+      test
+      </h2>
+    
+      <div id="winner" class="animated tada"></div>
+    
+    <div id="reloader">
+      <h3>
+        Press button A on any controller to restart the game.
+      </h3>
+        <button class="reset">
+          <h1>
+            Reset
+          </h1>
+        </button>
+      </div>
+  </div>
+    </div>
+  
+  <!--div id="debug">
+    
+  </div-->
+<script src="html2canvas.min.js" type="text/javascript"></script>
+</body>
+</html>
