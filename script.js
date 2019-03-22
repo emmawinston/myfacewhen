@@ -227,7 +227,7 @@ function sentence() {
 // COUNTDOWN TIMER
 
 function countDown() {
-  var count = 10, timer = setInterval(function() { //should be 59
+  var count = 59, timer = setInterval(function() { //should be 59
     tick.play();
     $("#counter").html(count--);
     if(count < 0) clearInterval(timer);
