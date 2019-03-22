@@ -29,6 +29,7 @@ const pop = new Audio("pop.mp3");
 const whoosh = new Audio("whoosh.mp3");
   
 var state = 0;
+$(".main").show();
 $("#cursors").hide();
 $("#maingame").hide();
 $("#tie").hide();
@@ -49,6 +50,7 @@ const gamepad = new Gamepad();
 
 function checkState() { 
   if (state == 0) {
+    $(".main").show();
     $("#maingame").hide();
     $("#tie").hide();
     $("#voting").hide();
@@ -67,6 +69,7 @@ function checkState() {
     winner = false;
   } 
   else if (state == 1) {
+    $(".main").show();
     $("#maingame").hide();
     $("#tie").hide();
     $("#splash").hide();
@@ -83,6 +86,7 @@ function checkState() {
     setTimeout(toStart, 5000);
   }
   else if (state == 2) {
+    $(".main").show();
     $("#maingame").show();
     $("#tie").hide();
     $("#splash").hide();
@@ -99,6 +103,7 @@ function checkState() {
     countDown();
   }
   else if (state == 3) {
+    $(".main").show();
     $("#timesup").hide();
     $("#voting").show();
     $("#cursors").show();
@@ -113,6 +118,7 @@ function checkState() {
     startVoting();
   }
   else if (state == 4) {
+    $(".main").show();
     $("#awards").show();
     $("#cursors").hide();
     $("#tie").hide();
@@ -126,6 +132,7 @@ function checkState() {
     setTimeout(lastScreen, 2000);
   }
   else if (state == 5) {
+    $(".main").show();
     $("#awards").hide();
     $("#tie").show();
     $("#cursors").hide();
