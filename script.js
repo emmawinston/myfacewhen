@@ -18,7 +18,7 @@ var phrases = [
   `I ${RiTa.randomWord('vb')} someone`,
   `my ${RiTa.randomWord('nn')} starts to ${RiTa.randomWord('vb')}`
 ];
-  
+
 const beep = new Audio("beep.mp3");
 const fanfare = new Audio("fanfare.mp3");
 const kazoo = new Audio("kazoo.mp3");
@@ -27,7 +27,7 @@ const go = new Audio("go.mp3");
 const ring = new Audio("ring.mp3");
 const pop = new Audio("pop.mp3");
 const whoosh = new Audio("whoosh.mp3");
-  
+
 var state = 0;
 $(".main").show();
 $("#cursors").hide();
@@ -48,7 +48,7 @@ $("#p3join").hide();
 sentence();
 const gamepad = new Gamepad();
 
-function checkState() { 
+function checkState() {
   if (state == 0) {
     $(".main").show();
     $("#maingame").hide();
@@ -67,7 +67,7 @@ function checkState() {
     $("#p2join").hide();
     $("#p3join").hide();
     winner = false;
-  } 
+  }
   else if (state == 1) {
     $(".main").show();
     $("#maingame").hide();
@@ -145,21 +145,21 @@ function checkState() {
     $("#reloader").hide();
   }
 }
-  
+
   $( "#start" ).click(function() {
     state = 1;
     checkState();
   });
-  
+
   $( ".reset" ).click(function() {
     location.reload();
   });
-  
-  
-/*----------------------------------------------*/	
-	
+
+
+/*----------------------------------------------*/
+
 // COUNTDOWN TO START
-    
+
 function toStart() {
   $("#startcounter").show();
   beep.play();
@@ -173,35 +173,35 @@ function toStart() {
       changeState(2);
     }
   }, 1000);
-};  
-  
-  
+};
+
+
 function lastScreen() {
   $("#reloader").show();
   ready = true;
 };
-  
+
 /*----------------------------------------------*/
     /* DRAG AND DROP */
-		
+
 		//Makes the pieces draggable & sets options
-		$("#piecesArea div div > img").draggable({ 
+		$("#piecesArea div div > img").draggable({
 				//Makes it so that the pieces' z-index can be reordered
 		stack: '#piecesArea > img', min: 500,scroll: false,
-				distance: 0		
+				distance: 0
 		});
-  
-  $("#awards > img").draggable({ 
+
+  $("#awards > img").draggable({
 				//Makes it so that the pieces' z-index can be reordered
 		stack: '#piecesArea > img', min: 500,scroll: false,
-				distance: 0		
+				distance: 0
 		});
-		
+
 		//Sets what happens when you release a piece
-		$(".facearea").droppable({	
+		$(".facearea").droppable({
 			drop: function(event, ui){
 				//this is so that the element "sticks" even when tab is changed.
-				ui.draggable.addClass("draggedout");			
+				ui.draggable.addClass("draggedout");
 			},
 			//changes current tab to the tab the piece belongs to when dragged out of body area
 			out: function(event, ui){
@@ -210,27 +210,27 @@ function lastScreen() {
 				$("#piecesArea").tabs('select' , whichTab);
 			}
 		});
-  
+
   var onDragOver = function(event) {
-    event.preventDefault(); 
+    event.preventDefault();
     if(!$(".dropzone").hasClass("dragover"))
         $(".dropzone").addClass("dragover");
     };
-  
+
     $(".dropzone").on("dragover", onDragOver);
 
-/*----------------------------------------------*/	
-  
+/*----------------------------------------------*/
+
 // GENERATE SENTENCE
-  
+
 function sentence() {
   var randomNumber = Math.floor(Math.random() * (phrases.length));
   prompt = (phrases[randomNumber]);
   $('.sentence').text(prompt);
 }
-  
-/*----------------------------------------------*/	
-	
+
+/*----------------------------------------------*/
+
 // COUNTDOWN TIMER
 
 function countDown() {
@@ -249,44 +249,44 @@ function countDown() {
         snapshot("#area3", "facevote3", 244);
         snapshot("#area4", "facevote4", 244, changeState, 3, function() { $("#timesup").hide(); });
       });
-  
+
     }
   }, 1000);
 };
-  
+
 function showtimesup(callback) {
   $("#timesup").show();
   console.log("timesup");
-    setTimeout(function(){ 
+    setTimeout(function(){
       callback(); // callback to add white backgrounds
     }, 1000);
 };
-  
-  
+
+
 function snapshot(element, newparent, size, callback, newState) {
   var el = $(element);
   var offset = el.offset();
   var offsetx = (offset.left);
   var offsety = (offset.top);
-  
-  html2canvas(document.body, {useCORS: true, x: offsetx, y: offsety, width: size, height: size, scale: window.devicePixelRatio*2}).then(function(canvas) { 
-    
+
+  html2canvas(document.body, {useCORS: true, x: offsetx, y: offsety, width: size, height: size, scale: window.devicePixelRatio*2}).then(function(canvas) {
+
   var getFullCanvas = canvas;
-      
+
       // generate an image element
   var imageData = document.createElement('img');
-      
+
       // get the data from the canvas and apply it to the image
   imageData.src = getFullCanvas.toDataURL("image/png");
-      
+
       // now append the image to the previewImage div
   document.getElementById(newparent).appendChild(imageData);
-    
-  setTimeout(function(){ 
+
+  setTimeout(function(){
     if(callback) callback(newState);
   }, 3000);
-    
-  }); 
+
+  });
 }
 
 function changeState(newState) {
@@ -295,39 +295,39 @@ function changeState(newState) {
   checkState();
   console.log(state);
 }
-  
-  /*----------------------------------------------*/	
-	
+
+  /*----------------------------------------------*/
+
 // VOTING
-  
-  
-var face1Votes = 0; 
-var face2Votes = 0; 
-var face3Votes = 0; 
+
+
+var face1Votes = 0;
+var face2Votes = 0;
+var face3Votes = 0;
 var face4Votes = 0;
-var clicks = 0;  
+var clicks = 0;
 var p0HasVoted = false;
 var p1HasVoted = false;
 var p2HasVoted = false;
 var p3HasVoted = false;
-  
+
 var p0HasJoined = false;
 var p1HasJoined = false;
 var p2HasJoined = false;
 var p3HasJoined = false;
 
 function startVoting() {
-  face1Votes = 0; 
-  face2Votes = 0; 
-  face3Votes = 0; 
-  face4Votes = 0; 
-  clicks = 0; 
+  face1Votes = 0;
+  face2Votes = 0;
+  face3Votes = 0;
+  face4Votes = 0;
+  clicks = 0;
   p0HasVoted = false;
   p1HasVoted = false;
   p2HasVoted = false;
   p3HasVoted = false;
 }
-  
+
 function checkClicks() {
   if ((clicks >= 4) || (p0HasVoted && p1HasVoted && p2HasVoted && p3HasVoted)) {
     if (state == 3 && face1Votes > face2Votes && face1Votes > face3Votes && face1Votes > face4Votes) {
@@ -337,7 +337,7 @@ function checkClicks() {
       fanfare.play();
       // start confetti
       $.confetti.start();
-      
+
       // stop confetti after 2 seconds
       setTimeout(function () {
         $.confetti.stop();
@@ -351,7 +351,7 @@ function checkClicks() {
       fanfare.play();
       // start confetti
       $.confetti.start();
-      
+
       // stop confetti after 2 seconds
       setTimeout(function () {
         $.confetti.stop();
@@ -365,7 +365,7 @@ function checkClicks() {
       fanfare.play();
       // start confetti
       $.confetti.start();
-      
+
       // stop confetti after 2 seconds
       setTimeout(function () {
         $.confetti.stop();
@@ -379,7 +379,7 @@ function checkClicks() {
       fanfare.play();
       // start confetti
       $.confetti.start();
-      
+
       // stop confetti after 2 seconds
       setTimeout(function () {
         $.confetti.stop();
@@ -394,7 +394,7 @@ function checkClicks() {
       fanfare.play();
       // start confetti
       $.confetti.start();
-      
+
       // stop confetti after 2 seconds
       setTimeout(function () {
         $.confetti.stop();
@@ -409,7 +409,7 @@ function checkClicks() {
       fanfare.play();
       // start confetti
       $.confetti.start();
-      
+
       // stop confetti after 2 seconds
       setTimeout(function () {
         $.confetti.stop();
@@ -418,13 +418,13 @@ function checkClicks() {
     }
     else if (state == 3 && face1Votes == face4Votes && face1Votes > face2Votes && face1Votes > face3Votes) {
       winner = "player14";
-      $('#winnertie').text("It's a tie! Players 1 and 4 win! 😁"); 
+      $('#winnertie').text("It's a tie! Players 1 and 4 win! 😁");
       $('#winner').append( $('#facevote1>img') );
       $('#winner').append( $('#facevote4>img') );
       fanfare.play();
       // start confetti
       $.confetti.start();
-      
+
       // stop confetti after 2 seconds
       setTimeout(function () {
         $.confetti.stop();
@@ -433,13 +433,13 @@ function checkClicks() {
     }
     else if (state == 3 && face2Votes == face3Votes && face2Votes > face4Votes) {
       winner = "player23";
-      $('#winnertie').text("It's a tie! Players 2 and 3 win! 😜"); 
+      $('#winnertie').text("It's a tie! Players 2 and 3 win! 😜");
       $('#winner').append( $('#facevote2>img') );
       $('#winner').append( $('#facevote3>img') );
       fanfare.play();
       // start confetti
       $.confetti.start();
-      
+
       // stop confetti after 2 seconds
       setTimeout(function () {
         $.confetti.stop();
@@ -448,13 +448,13 @@ function checkClicks() {
     }
     else if (state == 3 && face2Votes == face4Votes && face2Votes > face3Votes) {
       winner = "player24";
-      $('#winnertie').text("It's a tie! Players 2 and 4 win! 😍"); 
+      $('#winnertie').text("It's a tie! Players 2 and 4 win! 😍");
       $('#winner').append( $('#facevote2>img') );
       $('#winner').append( $('#facevote4>img') );
       fanfare.play();
       // start confetti
       $.confetti.start();
-      
+
       // stop confetti after 2 seconds
       setTimeout(function () {
         $.confetti.stop();
@@ -463,13 +463,13 @@ function checkClicks() {
     }
     else if (state == 3 && face3Votes == face4Votes && face3Votes > face2Votes && face3Votes > face1Votes) {
       winner = "player34";
-      $('#winnertie').text("It's a tie! Players 3 and 4 win! 😉"); 
+      $('#winnertie').text("It's a tie! Players 3 and 4 win! 😉");
       $('#winner').append( $('#facevote3>img') );
       $('#winner').append( $('#facevote4>img') );
       fanfare.play();
       // start confetti
       $.confetti.start();
-      
+
       // stop confetti after 2 seconds
       setTimeout(function () {
         $.confetti.stop();
@@ -478,14 +478,14 @@ function checkClicks() {
     }
     else if (state == 3 && face1Votes == face2Votes && face1Votes == face3Votes && face1Votes > face4Votes) {
       winner = "player123";
-      $('#winnertie').text("It's a THREE WAY tie! Players 1, 2 and 3 win! 😊"); 
+      $('#winnertie').text("It's a THREE WAY tie! Players 1, 2 and 3 win! 😊");
       $('#winner').append( $('#facevote1>img') );
       $('#winner').append( $('#facevote2>img') );
       $('#winner').append( $('#facevote3>img') );
       fanfare.play();
       // start confetti
       $.confetti.start();
-      
+
       // stop confetti after 2 seconds
       setTimeout(function () {
         $.confetti.stop();
@@ -494,14 +494,14 @@ function checkClicks() {
     }
     else if (state == 3 && face2Votes == face3Votes && face2Votes == face4Votes && face2Votes > face1Votes) {
       winner = "player234";
-      $('#winnertie').text("It's a THREE WAY tie! Players 2, 3 and 4 win! 😃"); 
+      $('#winnertie').text("It's a THREE WAY tie! Players 2, 3 and 4 win! 😃");
       $('#winner').append( $('#facevote2>img') );
       $('#winner').append( $('#facevote3>img') );
       $('#winner').append( $('#facevote4>img') );
       fanfare.play();
       // start confetti
       $.confetti.start();
-      
+
       // stop confetti after 2 seconds
       setTimeout(function () {
         $.confetti.stop();
@@ -510,14 +510,14 @@ function checkClicks() {
     }
     else if (state == 3 && face1Votes == face3Votes && face1Votes == face4Votes && face1Votes > face2Votes) {
       winner = "player134";
-      $('#winnertie').text("It's a THREE WAY tie! Players 1, 3 and 4 win! 😛"); 
+      $('#winnertie').text("It's a THREE WAY tie! Players 1, 3 and 4 win! 😛");
       $('#winner').append( $('#facevote1>img') );
       $('#winner').append( $('#facevote3>img') );
       $('#winner').append( $('#facevote4>img') );
       fanfare.play();
       // start confetti
       $.confetti.start();
-      
+
       // stop confetti after 2 seconds
       setTimeout(function () {
         $.confetti.stop();
@@ -533,7 +533,7 @@ function checkClicks() {
       fanfare.play();
       // start confetti
       $.confetti.start();
-      
+
       // stop confetti after 2 seconds
       setTimeout(function () {
         $.confetti.stop();
@@ -551,7 +551,7 @@ function checkClicks() {
       fanfare.play();
       // start confetti
       $.confetti.start();
-      
+
       // stop confetti after 2 seconds
       setTimeout(function () {
         $.confetti.stop();
@@ -570,32 +570,32 @@ function voteFace1() {
   face1Votes++;
   clickLogic();
 }
-  
+
 function voteFace2() {
   face2Votes++;
   clickLogic();
 }
-  
+
 function voteFace3() {
   face3Votes++;
   clickLogic();
 }
-  
+
 function voteFace4() {
   face4Votes++;
   clickLogic();
 }
-  
-$("#facevote1").click( voteFace1 ); 
-$("#facevote2").click( voteFace2 ); 
-$("#facevote3").click( voteFace3 ); 
-$("#facevote4").click( voteFace4 ); 
+
+$("#facevote1").click( voteFace1 );
+$("#facevote2").click( voteFace2 );
+$("#facevote3").click( voteFace3 );
+$("#facevote4").click( voteFace4 );
 
 
 /*----------------------------------------------*/
-  
-// GAMEPADS  
-  
+
+// GAMEPADS
+
 var cursor0 = document.getElementById("cursor0");
 var cursor1 = document.getElementById("cursor1");
 var cursor2 = document.getElementById("cursor2");
@@ -608,7 +608,7 @@ var x2 = 35;
 var y2 = 925;
 var x3 = 1665;
 var y3 = 925;
-  
+
 
 var held0 = [];
 var held1 = [];
@@ -616,7 +616,7 @@ var held2 = [];
 var held3 = [];
 
 // const gamepad = new Gamepad();
-  
+
 gamepad.on('connect', e => {
     console.log(`controller ${e.index} connected!`);
     if (e.index == 0) {
@@ -648,60 +648,60 @@ gamepad.on('disconnect', e => {
       $(cursor3).hide();
     };
 });
-  
+
 var movementFactor = 5;
-  
+
 
 // CURSORS
-// joystick left/right  
+// joystick left/right
 gamepad.on('hold', 'stick_axis_left', e => {
   if (e.player == 0) {
-    
+
       x0 += e.value[0] * movementFactor;
       cursor0.style.left = x0 + "px";
-    
+
       y0 += e.value[1] * movementFactor;
       cursor0.style.top = y0 + "px";
-    
+
     for (var img of held0) {
       img.elem.style.left = ((x0 - img.startx)) + "px";
       img.elem.style.top = ((y0 - img.starty)) + "px";
     }
   }
   else if (e.player == 1) {
-    
+
       x1 += e.value[0] * movementFactor;
       cursor1.style.left = x1 + "px";
-    
+
       y1 += e.value[1] * movementFactor;
       cursor1.style.top = y1 + "px";
-    
+
     for (var img of held1) {
       img.elem.style.left = ((x1 - img.startx)) + "px";
       img.elem.style.top = ((y1 - img.starty)) + "px";
     }
   }
   else if (e.player == 2) {
-    
+
       x2 += e.value[0] * movementFactor;
       cursor2.style.left = x2 + "px";
-    
+
       y0 += e.value[1] * movementFactor;
       cursor2.style.top = y2 + "px";
-    
+
     for (var img of held2) {
       img.elem.style.left = ((x2 - img.startx)) + "px";
       img.elem.style.top = ((y2 - img.starty)) + "px";
     }
   }
   else if (e.player == 3) {
-    
+
       x3 += e.value[0] * movementFactor;
       cursor3.style.left = x3 + "px";
-    
+
       y3 += e.value[1] * movementFactor;
       cursor3.style.top = y3 + "px";
-    
+
     for (var img of held3) {
       img.elem.style.left = ((x3 - img.startx)) + "px";
       img.elem.style.top = ((y3 - img.starty)) + "px";
@@ -710,7 +710,7 @@ gamepad.on('hold', 'stick_axis_left', e => {
 });
 
 gamepad.on('press', 'button_2', () => {
-  if (state == 0) {  
+  if (state == 0) {
     console.log('button 1 was pressed!');
     location.reload();
   }
@@ -771,11 +771,11 @@ gamepad.on('press', 'button_1', (e) => {
       if ( isOverlapping(cursor0, this)) {
         pop.play();
         held0.push(
-          {elem: this, 
+          {elem: this,
            startx: x0 - $(this).cssFloat('left'), //offset it to account for where we pick it up
            starty: y0 - $(this).cssFloat('top')
           }
-        ); 
+        );
       }
     });
   }
@@ -807,12 +807,13 @@ gamepad.on('press', 'button_1', (e) => {
     if (state == 2) {
     $('.wrapper').find('img').each(function(i) {
       if ( isOverlapping(cursor1, this)) {
+        pop.play();
         held1.push(
-          {elem: this, 
+          {elem: this,
            startx: x1 - $(this).cssFloat('left'), //offset it to account for where we pick it up
            starty: y1 - $(this).cssFloat('top')
           }
-        ); 
+        );
       }
     });
   }
@@ -843,12 +844,13 @@ gamepad.on('press', 'button_1', (e) => {
     if (state == 2) {
     $('.wrapper').find('img').each(function(i) {
       if ( isOverlapping(cursor2, this)) {
+        pop.play();
         held2.push(
-          {elem: this, 
+          {elem: this,
            startx: x2 - $(this).cssFloat('left'), //offset it to account for where we pick it up
            starty: y2 - $(this).cssFloat('top')
           }
-        ); 
+        );
       }
     });
   }
@@ -879,12 +881,13 @@ gamepad.on('press', 'button_1', (e) => {
     if (state == 2) {
     $('.wrapper').find('img').each(function(i) {
       if ( isOverlapping(cursor3, this)) {
+        pop.play();
         held3.push(
-          {elem: this, 
+          {elem: this,
            startx: x3 - $(this).cssFloat('left'), //offset it to account for where we pick it up
            starty: y3 - $(this).cssFloat('top')
           }
-        ); 
+        );
       }
     });
   }
@@ -911,12 +914,12 @@ gamepad.on('press', 'button_1', (e) => {
       }
     }
   }
-  
+
   $("#debug").text(" held0:" + held0.length + " held1:" + held1.length + " held2:" + held2.length + " held3:" + held3.length + " pressed:" + e.player);
-  
+
 });
 
-  
+
 gamepad.on('release', 'button_1', (e) => {
   // console.log('button a was released!' + Date.now());
   if (e.player == 0) {
@@ -931,11 +934,11 @@ gamepad.on('release', 'button_1', (e) => {
   else if (e.player == 3) {
     held3 = [];
   }
-  
+
   $("#debug").text(" held0:" + held0.length + " held1:" + held1.length + " held2:" + held2.length + " held3:" + held3.length+ " released:" + e.player);
-    
+
 });
-  
+
 function isOverlapping(e1, e2){
   if( e1.length && e1.length > 1 ){
     e1 = e1[0];
@@ -945,52 +948,50 @@ function isOverlapping(e1, e2){
   }
   var rect1 = e1 instanceof Element ? e1.getBoundingClientRect() : false;
   var rect2 = e2 instanceof Element ? e2.getBoundingClientRect() : false;
-  
+
   //window.console ? console.log(rect1, rect2 ) : null ;
   var overlap = null;
   if( rect1 && rect2 ){
     overlap = !(
-        rect1.right < rect2.left || 
-        rect1.left > rect2.right || 
-        rect1.bottom < rect2.top || 
+        rect1.right < rect2.left ||
+        rect1.left > rect2.right ||
+        rect1.bottom < rect2.top ||
         rect1.top > rect2.bottom
       )
-    return overlap;  
+    return overlap;
   } else {
     return overlap;
   }
 }
-  
+
 jQuery.fn.cssFloat = function (prop) {
     return parseFloat(this.css(prop)) || 0;
 };
 
 /*----------------------------------------------*/
-  
-// ZOOM 
+
+// ZOOM
 // If main block is wider than window, zoom the whole document out
-  
-zoomZoom(); 
-  
-$( window ).resize(function() { 
+
+zoomZoom();
+
+$( window ).resize(function() {
   zoomZoom();
 });
-   
+
 function zoomZoom() {
   var htmlWidth = $('html').innerWidth();
   var bodyWidth = 1920;
-   
+
   if (htmlWidth > bodyWidth) {
-    var scale = 1 
+    var scale = 1
   } else {
     var scale = Math.round( (htmlWidth / bodyWidth - 0.1) * 10) / 10;
     console.log(scale);
-    $(".main").css("zoom", scale); 
+    $(".main").css("zoom", scale);
   }
-} 
-  
-  
-  
-}); // document ready  
+}
 
 
+
+}); // document ready
