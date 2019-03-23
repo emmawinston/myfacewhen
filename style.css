@@ -426,6 +426,10 @@ cursor: move;
   margin-bottom: -20px;
 }
 
+#cursors {
+  display: none;
+}
+
 .cursor {
   width: 20px;
   height: 20px;
