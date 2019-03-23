@@ -9,6 +9,8 @@
 
 /*------------------------------------------------*/
 
+html { overflow: hidden; }
+
 body {
   font-family: "Helvetica Neue", helvetica, arial, sans-serif;
   font-size: 2em;
