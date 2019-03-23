@@ -465,3 +465,9 @@ cursor: move;
 #reloader h3 {
   text-align: center;
 }
+
+#info {
+position: absolute;
+  bottom: 0;
+  right: 0;
+}
