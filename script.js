@@ -97,7 +97,7 @@ function checkVerb() {
     `my friend starts to ${currentVerb} to me`,
     `my date starts to ${currentVerb} to me`,
     `someone throws ${article} ${currentNoun} at me`,
-    `someone asks me to ${currentVerb} their ${currentNoun}`,
+    `I ${currentVerb} someone's ${currentNoun}`,
     `I want to ${currentVerb} but I have to ${rhymeVerb} instead`,
     `I'm trying to ${currentVerb} ${article} ${currentNoun}, but I ${rhymeVerb} ${rhymeArticle} ${rhymeNoun} instead`,
     `I accidentally ${currentVerb} ${article} ${currentNoun} instead of ${rhymeVerb}ing ${rhymeArticle} ${rhymeNoun}`,
@@ -694,9 +694,9 @@ var y0 = 430;
 var x1 = 1665;
 var y1 = 430;
 var x2 = 35;
-var y2 = 925;
+var y2 = 936;
 var x3 = 1665;
-var y3 = 925;
+var y3 = 936;
 
 
 var held0 = [];
