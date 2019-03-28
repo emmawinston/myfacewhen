@@ -5,19 +5,107 @@ var winner = false;
 var ready = false;
 var prompt = "";
 var gamepads = {};
-var phrases = [
-  `I have to pretend to be interested in ${RiTa.randomWord('nn')}s`,
-  `I eat an entire ${RiTa.randomWord('nn')}`,
-  `I accidentally buy a ${RiTa.randomWord('nn')} instead of a ${RiTa.randomWord('nn')}`,
-  `I really need to ${RiTa.randomWord('vb')} a ${RiTa.randomWord('nn')}`,
-  `my date starts to ${RiTa.randomWord('vb')}`,
-  `someone throws a ${RiTa.randomWord('nn')} at me`,
-  `someone asks me to ${RiTa.randomWord('vb')} them`,
-  `I want to ${RiTa.randomWord('vb')} but I have to ${RiTa.randomWord('vb')} instead`,
-  `I'm trying to ${RiTa.randomWord('vb')} something but I ${RiTa.randomWord('vb')} it instead`,
-  `I ${RiTa.randomWord('vb')} someone`,
-  `my ${RiTa.randomWord('nn')} starts to ${RiTa.randomWord('vb')}`
-];
+var currentVerb = RiTa.randomWord('vb');
+var currentNoun = RiTa.randomWord('nn');
+var rhymeVerb = RiTa.similarBySound(currentVerb);
+var rhymeNoun = RiTa.similarBySound(currentNoun);
+var article = "";
+var rhymeArticle = "";
+var phrases = [];
+
+function generateWords() {
+  currentVerb = RiTa.randomWord('vb');
+  var currentNoun = RiTa.randomWord('nn');
+  var rhymeVerb = RiTa.randomItem(RiTa.rhymes(currentVerb));
+  var rhymeNoun = RiTa.randomItem(RiTa.rhymes(currentNoun));
+
+function checkVerb() {
+    // oh for god's sake. take out the words which tend to generate questionable stuff
+    if (RiTa.isVerb(rhymeVerb) == false
+        || currentVerb == "excite"
+        || currentVerb == "mount"
+        || rhymeVerb == "excite"
+        || rhymeVerb == "mount") {
+        console.log(rhymeVerb);
+        currentVerb = RiTa.randomWord('vb');
+        rhymeVerb = RiTa.randomItem(RiTa.rhymes(currentVerb));
+        console.log(rhymeVerb);
+        console.log('rolling again');
+        return checkVerb();
+    } else {
+      console.log("verb is " + currentVerb + ", rhyme is " + rhymeVerb);
+    }
+  }
+
+  function checkNoun() {
+    // oh for god's sake. take out the words which tend to generate questionable stuff
+    if (RiTa.isNoun(rhymeNoun) == false
+        || currentNoun == "hole"
+        || currentNoun == "black"
+        || currentNoun == "white"
+        || currentNoun == "column"
+        || currentNoun == "slave"
+        || rhymeNoun == "hole"
+        || rhymeNoun == "black"
+        || rhymeNoun == "white"
+        || rhymeNoun == "column"
+        || rhymeNoun == "slave") {
+        console.log(rhymeNoun);
+        currentNoun = RiTa.randomWord('nn');
+        rhymeNoun = RiTa.randomItem(RiTa.rhymes(currentNoun));
+        console.log(rhymeNoun);
+        console.log('rolling again');
+        return checkNoun();
+    } else {
+      console.log("noun is " + currentNoun + ", rhyme is " + rhymeNoun);
+      checkArticle();
+      console.log("article is " + article);
+      console.log("rhymearticle is " + rhymeArticle);
+    }
+  }
+
+  function checkArticle() {
+    if (currentNoun.charAt(0) == "a" ||
+        currentNoun.charAt(0) == "e" ||
+        currentNoun.charAt(0) == "i" ||
+        currentNoun.charAt(0) == "o" ||
+        currentNoun.charAt(0) == "u") {
+        article = "an";
+    } else {
+        article = "a";
+    }
+
+    if (rhymeNoun.charAt(0) == "a" ||
+        rhymeNoun.charAt(0) == "e" ||
+        rhymeNoun.charAt(0) == "i" ||
+        rhymeNoun.charAt(0) == "o" ||
+        rhymeNoun.charAt(0) == "u") {
+        rhymeArticle = "an";
+    } else {
+        rhymeArticle = "a";
+    }
+  }
+
+  checkVerb();
+  checkNoun();
+
+  phrases = [
+    `I have to pretend to be interested in ${RiTa.pluralize(currentNoun)}`,
+    `I eat an entire ${currentNoun}`,
+    `I accidentally buy ${article} ${currentNoun} instead of ${rhymeArticle} ${rhymeNoun}`,
+    `I really want to ${currentVerb} a ${currentNoun}`,
+    `my friend starts to ${currentVerb} to me`,
+    `my date starts to ${currentVerb} to me`,
+    `someone throws ${article} ${currentNoun} at me`,
+    `someone asks me to ${currentVerb} their ${currentNoun}`,
+    `I want to ${currentVerb} but I have to ${rhymeVerb} instead`,
+    `I'm trying to ${currentVerb} ${article} ${currentNoun}, but I ${rhymeVerb} ${rhymeArticle} ${rhymeNoun} instead`,
+    `I accidentally ${currentVerb} ${article} ${currentNoun} instead of ${rhymeVerb}ing ${rhymeArticle} ${rhymeNoun}`,
+    `I ${currentVerb} a ${currentNoun}`,
+    `my ${currentNoun} suddenly starts to ${currentVerb}`
+  ];
+
+};
 
 const beep = new Audio("beep.mp3");
 const fanfare = new Audio("fanfare.mp3");
@@ -45,6 +133,7 @@ $("#p0join").hide();
 $("#p1join").hide();
 $("#p2join").hide();
 $("#p3join").hide();
+generateWords();
 sentence();
 const gamepad = new Gamepad();
 
