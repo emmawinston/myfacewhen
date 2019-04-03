@@ -698,6 +698,10 @@ var y2 = 936;
 var x3 = 1665;
 var y3 = 936;
 
+var cursorMinX = 0;
+var cursorMinY = 0;
+var cursorMaxX = 1920;
+var cursorMaxY = 1080;
 
 var held0 = [];
 var held1 = [];
@@ -747,9 +751,11 @@ gamepad.on('hold', 'stick_axis_left', e => {
   if (e.player == 0) {
 
       x0 += e.value[0] * movementFactor;
+      x0 = Math.min(Math.max(cursorMinX, x0), cursorMaxX);
       cursor0.style.left = x0 + "px";
 
       y0 += e.value[1] * movementFactor;
+      y0 = Math.min(Math.max(cursorMinY, y0), cursorMaxY);
       cursor0.style.top = y0 + "px";
 
     for (var img of held0) {
@@ -760,9 +766,11 @@ gamepad.on('hold', 'stick_axis_left', e => {
   else if (e.player == 1) {
 
       x1 += e.value[0] * movementFactor;
+      x1 = Math.min(Math.max(cursorMinX, x1), cursorMaxX);
       cursor1.style.left = x1 + "px";
 
       y1 += e.value[1] * movementFactor;
+      y1 = Math.min(Math.max(cursorMinY, y1), cursorMaxY);
       cursor1.style.top = y1 + "px";
 
     for (var img of held1) {
@@ -773,9 +781,11 @@ gamepad.on('hold', 'stick_axis_left', e => {
   else if (e.player == 2) {
 
       x2 += e.value[0] * movementFactor;
+      x2 = Math.min(Math.max(cursorMinX, x2), cursorMaxX);
       cursor2.style.left = x2 + "px";
 
-      y0 += e.value[1] * movementFactor;
+      y2 += e.value[1] * movementFactor;
+      y2 = Math.min(Math.max(cursorMinY, y2), cursorMaxY);
       cursor2.style.top = y2 + "px";
 
     for (var img of held2) {
@@ -786,9 +796,11 @@ gamepad.on('hold', 'stick_axis_left', e => {
   else if (e.player == 3) {
 
       x3 += e.value[0] * movementFactor;
+      x3 = Math.min(Math.max(cursorMinX, x3), cursorMaxX);
       cursor3.style.left = x3 + "px";
 
       y3 += e.value[1] * movementFactor;
+      y3 = Math.min(Math.max(cursorMinY, y3), cursorMaxY);
       cursor3.style.top = y3 + "px";
 
     for (var img of held3) {
