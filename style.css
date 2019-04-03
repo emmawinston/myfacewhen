@@ -142,6 +142,10 @@ body {
   padding-top: 40px;
 }
 
+#header .emoji img {
+  padding-top: 0px;
+}
+
 #tabsbar {
     margin-bottom: -2px;
     font-size: 0.9em;
