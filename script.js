@@ -421,7 +421,7 @@ function checkClicks() {
   if ((clicks >= 4) || (p0HasVoted && p1HasVoted && p2HasVoted && p3HasVoted)) {
     if (state == 3 && face1Votes > face2Votes && face1Votes > face3Votes && face1Votes > face4Votes) {
       winner = "face1";
-      $('#winnertie').text("PLAYER 1 WINS! 😍");
+      $('#winnertie').html("PLAYER 1 WINS! <img src='emojihearteyes.png' width='40px' />");
       $('#winner').append( $('#facevote1>img') );
       fanfare.play();
       // start confetti
@@ -435,7 +435,7 @@ function checkClicks() {
     }
     else if (state == 3 && face2Votes > face1Votes && face2Votes > face3Votes && face2Votes > face4Votes) {
       winner = "face2";
-      $('#winnertie').text("PLAYER 2 WINS! 😝");
+      $('#winnertie').html("PLAYER 2 WINS! <img src='emojitongueout.png' width='40px' />");
       $('#winner').append( $('#facevote2>img') );
       fanfare.play();
       // start confetti
@@ -449,7 +449,7 @@ function checkClicks() {
     }
     else if (state == 3 && face3Votes > face1Votes && face3Votes > face2Votes && face3Votes > face4Votes) {
       winner = "face3";
-      $('#winnertie').text("PLAYER 3 WINS! 😃");
+      $('#winnertie').text("PLAYER 3 WINS! <img src='emojigrin.png' width='40px' />");
       $('#winner').append( $('#facevote3>img') );
       fanfare.play();
       // start confetti
@@ -463,7 +463,7 @@ function checkClicks() {
     }
     else if (state == 3 && face4Votes > face1Votes && face4Votes > face2Votes && face4Votes > face3Votes) {
       winner = "face4";
-      $('#winnertie').text("PLAYER 4 WINS! 😊");
+      $('#winnertie').text("PLAYER 4 WINS! <img src='emojibeam.png' width='40px' />");
       $('#winner').append( $('#facevote4>img') );
       fanfare.play();
       // start confetti
@@ -477,7 +477,7 @@ function checkClicks() {
     }
     else if (state == 3 && face1Votes == face2Votes && face1Votes > face3Votes && face1Votes > face4Votes) {
       winner = "player12";
-      $('#winnertie').text("It's a tie! Players 1 and 2 win! 😘");
+      $('#winnertie').text("It's a tie! Players 1 and 2 win! <img src='emojikiss.png' width='40px' />");
       $('#winner').append( $('#facevote1>img') );
       $('#winner').append( $('#facevote2>img') );
       fanfare.play();
@@ -492,7 +492,7 @@ function checkClicks() {
     }
     else if (state == 3 && face1Votes == face3Votes && face1Votes > face2Votes && face1Votes > face4Votes) {
       winner = "player13";
-      $('#winnertie').text("It's a tie! Players 1 and 3 win! 😙");
+      $('#winnertie').text("It's a tie! Players 1 and 3 win! <img src='emojipout.png' width='40px' />");
       $('#winner').append( $('#facevote1>img') );
       $('#winner').append( $('#facevote3>img') );
       fanfare.play();
@@ -507,7 +507,7 @@ function checkClicks() {
     }
     else if (state == 3 && face1Votes == face4Votes && face1Votes > face2Votes && face1Votes > face3Votes) {
       winner = "player14";
-      $('#winnertie').text("It's a tie! Players 1 and 4 win! 😁");
+      $('#winnertie').text("It's a tie! Players 1 and 4 win! <img src='emojigrin.png' width='40px' />");
       $('#winner').append( $('#facevote1>img') );
       $('#winner').append( $('#facevote4>img') );
       fanfare.play();
@@ -522,7 +522,7 @@ function checkClicks() {
     }
     else if (state == 3 && face2Votes == face3Votes && face2Votes > face4Votes) {
       winner = "player23";
-      $('#winnertie').text("It's a tie! Players 2 and 3 win! 😜");
+      $('#winnertie').text("It's a tie! Players 2 and 3 win! <img src='emojiwackywink.png' width='40px' />");
       $('#winner').append( $('#facevote2>img') );
       $('#winner').append( $('#facevote3>img') );
       fanfare.play();
@@ -537,7 +537,7 @@ function checkClicks() {
     }
     else if (state == 3 && face2Votes == face4Votes && face2Votes > face3Votes) {
       winner = "player24";
-      $('#winnertie').text("It's a tie! Players 2 and 4 win! 😍");
+      $('#winnertie').text("It's a tie! Players 2 and 4 win! <img src='emojihearteyes.png' width='40px' />");
       $('#winner').append( $('#facevote2>img') );
       $('#winner').append( $('#facevote4>img') );
       fanfare.play();
@@ -552,7 +552,7 @@ function checkClicks() {
     }
     else if (state == 3 && face3Votes == face4Votes && face3Votes > face2Votes && face3Votes > face1Votes) {
       winner = "player34";
-      $('#winnertie').text("It's a tie! Players 3 and 4 win! 😉");
+      $('#winnertie').text("It's a tie! Players 3 and 4 win! <img src='emojiwink.png' width='40px' />");
       $('#winner').append( $('#facevote3>img') );
       $('#winner').append( $('#facevote4>img') );
       fanfare.play();
@@ -567,7 +567,7 @@ function checkClicks() {
     }
     else if (state == 3 && face1Votes == face2Votes && face1Votes == face3Votes && face1Votes > face4Votes) {
       winner = "player123";
-      $('#winnertie').text("It's a THREE WAY tie! Players 1, 2 and 3 win! 😊");
+      $('#winnertie').text("It's a THREE WAY tie! Players 1, 2 and 3 win! <img src='emojibeam.png' width='40px' />");
       $('#winner').append( $('#facevote1>img') );
       $('#winner').append( $('#facevote2>img') );
       $('#winner').append( $('#facevote3>img') );
@@ -583,7 +583,7 @@ function checkClicks() {
     }
     else if (state == 3 && face2Votes == face3Votes && face2Votes == face4Votes && face2Votes > face1Votes) {
       winner = "player234";
-      $('#winnertie').text("It's a THREE WAY tie! Players 2, 3 and 4 win! 😃");
+      $('#winnertie').text("It's a THREE WAY tie! Players 2, 3 and 4 win! <img src='emojigrin.png' width='40px' />");
       $('#winner').append( $('#facevote2>img') );
       $('#winner').append( $('#facevote3>img') );
       $('#winner').append( $('#facevote4>img') );
@@ -599,7 +599,7 @@ function checkClicks() {
     }
     else if (state == 3 && face1Votes == face3Votes && face1Votes == face4Votes && face1Votes > face2Votes) {
       winner = "player134";
-      $('#winnertie').text("It's a THREE WAY tie! Players 1, 3 and 4 win! 😛");
+      $('#winnertie').text("It's a THREE WAY tie! Players 1, 3 and 4 win! <img src='emojitongue.png' width='40px' />");
       $('#winner').append( $('#facevote1>img') );
       $('#winner').append( $('#facevote3>img') );
       $('#winner').append( $('#facevote4>img') );
@@ -615,7 +615,7 @@ function checkClicks() {
     }
     else if (state == 3 && face1Votes == face2Votes && face1Votes == face4Votes && face1Votes > face3Votes) {
       winner = "player124";
-      $('#winnertie').text("It's a THREE WAY tie! Players 1, 2 and 4 win! 😊");
+      $('#winnertie').text("It's a THREE WAY tie! Players 1, 2 and 4 win! <img src='emojibeam.png' width='40px' />");
       $('#winner').append( $('#facevote1>img') );
       $('#winner').append( $('#facevote2>img') );
       $('#winner').append( $('#facevote4>img') );
@@ -631,7 +631,7 @@ function checkClicks() {
     }
     else if (state == 3 && face1Votes == face2Votes && face1Votes == face3Votes && face1Votes == face4Votes) {
       winner = "everybody";
-      $('#winnertie').text("It's a tie, and EVERYBODY WINS! 😱");
+      $('#winnertie').text("It's a tie, and EVERYBODY WINS! <img src='emojiscream.png' width='40px' />");
       $('#winner').width('80%');
       $('#winner').append( $('#facevote1>img').width('25%') );
       $('#winner').append( $('#facevote2>img').width('25%') );
