@@ -448,6 +448,12 @@ cursor: move;
   text-align: left;
 }
 
+button {
+   background: transparent;
+   border: 2px solid #f9dbff;
+   color: #f9dbff;
+}
+
 #cursor0 {
   left: 35px;
   top: 430px;
