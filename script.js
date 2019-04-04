@@ -1069,30 +1069,4 @@ jQuery.fn.cssFloat = function (prop) {
     return parseFloat(this.css(prop)) || 0;
 };
 
-/*----------------------------------------------*/
-
-// ZOOM
-// If main block is wider than window, zoom the whole document out
-
-/* zoomZoom();
-
-$( window ).resize(function() {
-  zoomZoom();
-});
-
-function zoomZoom() {
-  var htmlWidth = $('html').innerWidth();
-  var bodyWidth = 1920;
-
-  if (htmlWidth > bodyWidth) {
-    var scale = 1
-  } else {
-    var scale = Math.round( (htmlWidth / bodyWidth - 0.1) * 10) / 10;
-    console.log(scale);
-    $(".main").css("zoom", scale);
-  }
-} */
-
-
-
 }); // document ready
