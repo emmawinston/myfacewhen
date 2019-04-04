@@ -449,7 +449,7 @@ function checkClicks() {
     }
     else if (state == 3 && face3Votes > face1Votes && face3Votes > face2Votes && face3Votes > face4Votes) {
       winner = "face3";
-      $('#winnertie').text("PLAYER 3 WINS! <img src='emojigrin.png' width='40px' />");
+      $('#winnertie').html("PLAYER 3 WINS! <img src='emojigrin.png' width='40px' />");
       $('#winner').append( $('#facevote3>img') );
       fanfare.play();
       // start confetti
@@ -463,7 +463,7 @@ function checkClicks() {
     }
     else if (state == 3 && face4Votes > face1Votes && face4Votes > face2Votes && face4Votes > face3Votes) {
       winner = "face4";
-      $('#winnertie').text("PLAYER 4 WINS! <img src='emojibeam.png' width='40px' />");
+      $('#winnertie').html("PLAYER 4 WINS! <img src='emojibeam.png' width='40px' />");
       $('#winner').append( $('#facevote4>img') );
       fanfare.play();
       // start confetti
@@ -700,8 +700,8 @@ var y3 = 936;
 
 var cursorMinX = 0;
 var cursorMinY = 0;
-var cursorMaxX = 1920;
-var cursorMaxY = 1080;
+var cursorMaxX = 1878;
+var cursorMaxY = 1038;
 
 var held0 = [];
 var held1 = [];
@@ -1074,7 +1074,7 @@ jQuery.fn.cssFloat = function (prop) {
 // ZOOM
 // If main block is wider than window, zoom the whole document out
 
-zoomZoom();
+/* zoomZoom();
 
 $( window ).resize(function() {
   zoomZoom();
@@ -1091,7 +1091,7 @@ function zoomZoom() {
     console.log(scale);
     $(".main").css("zoom", scale);
   }
-}
+} */
 
 
 
