@@ -44,6 +44,7 @@ body {
   background: linear-gradient(90deg, rgba(255,188,234,1) 0%, rgba(233,192,255,1) 35%, rgba(189,244,255,1) 100%);
   zoom: 1;
   display: none;
+  overflow: hidden;
 }
 
 .white {
