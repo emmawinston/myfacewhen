@@ -25,9 +25,11 @@ function checkVerb() {
         || currentVerb == "excite"
         || currentVerb == "mount"
         || currentVerb == "enter"
+        || currentVerb == "ride"
         || rhymeVerb == "excite"
         || rhymeVerb == "mount"
-        || rhymeVerb == "enter") {
+        || rhymeVerb == "enter"
+        || rhymeVerb == "ride") {
         console.log(rhymeVerb);
         currentVerb = RiTa.randomWord('vb');
         rhymeVerb = RiTa.randomItem(RiTa.rhymes(currentVerb));
@@ -97,7 +99,6 @@ function checkVerb() {
     `I accidentally buy ${article} ${currentNoun} instead of ${rhymeArticle} ${rhymeNoun}`,
     `I really want to ${currentVerb} a ${currentNoun}`,
     `my friend starts to ${currentVerb} to me`,
-    `my date starts to ${currentVerb} to me`,
     `someone throws ${article} ${currentNoun} at me`,
     `I ${currentVerb} someone's ${currentNoun}`,
     `I want to ${currentVerb} but I have to ${rhymeVerb} instead`,
