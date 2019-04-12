@@ -24,8 +24,10 @@ function checkVerb() {
     if (RiTa.isVerb(rhymeVerb) == false
         || currentVerb == "excite"
         || currentVerb == "mount"
+        || currentVerb == "enter"
         || rhymeVerb == "excite"
-        || rhymeVerb == "mount") {
+        || rhymeVerb == "mount"
+        || rhymeVerb == "enter") {
         console.log(rhymeVerb);
         currentVerb = RiTa.randomWord('vb');
         rhymeVerb = RiTa.randomItem(RiTa.rhymes(currentVerb));
